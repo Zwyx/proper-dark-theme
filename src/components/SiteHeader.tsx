@@ -8,7 +8,9 @@ export const SiteHeader = () => {
 					<img src="Zwyx-220x220-rounded.png" width={32} alt="Zwyx" />
 				</div>
 
-				<span className="flex-[10] text-center font-bold"></span>
+				<span className="flex-[10] text-center font-bold">
+					Proper Dark Theme
+				</span>
 
 				<nav className="flex flex-1 items-center justify-end gap-1">
 					<ThemeSelector />

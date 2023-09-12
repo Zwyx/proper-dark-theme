@@ -15,4 +15,5 @@ export default defineConfig({
 	build: {
 		outDir: "docs",
 	},
+	base: "/proper-dark-theme",
 });
