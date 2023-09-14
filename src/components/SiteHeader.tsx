@@ -1,6 +1,15 @@
 import { ThemeSelector } from "@/components/ThemeSelector";
+import { cn } from "@/lib/utils";
+import { LucideArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export const SiteHeader = () => {
+	const [bouncingArrowVisible, setBouncingArrowVisible] = useState(false);
+
+	useEffect(() => {
+		setTimeout(() => setBouncingArrowVisible(true), 500);
+	}, []);
+
 	return (
 		<header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-40 w-full border-b bg-background/95 shadow-sm backdrop-blur">
 			<div className="container flex h-14 items-center gap-4 p-6">
@@ -12,8 +21,15 @@ export const SiteHeader = () => {
 					Proper Dark Theme
 				</span>
 
-				<nav className="flex flex-1 items-center justify-end gap-1">
-					<ThemeSelector />
+				<nav className="flex flex-[1] items-center justify-end gap-1">
+					<LucideArrowRight
+						className={cn(
+							"animate-bounce-x transition-opacity duration-300",
+							!bouncingArrowVisible && "opacity-0",
+						)}
+					/>
+
+					<ThemeSelector onOpenChange={() => setBouncingArrowVisible(false)} />
 				</nav>
 			</div>
 		</header>
