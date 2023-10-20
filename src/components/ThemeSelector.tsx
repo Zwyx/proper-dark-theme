@@ -27,6 +27,15 @@ export const ThemeSelector: FC<{ onOpenChange: () => void }> = ({
 			<DropdownMenuContent align="end">
 				<DropdownMenuItem
 					onClick={() => {
+						updateThemeChoice("system");
+					}}
+				>
+					<LucideLaptop className="mr-2 h-4 w-4" />
+					<span>Same as device</span>
+				</DropdownMenuItem>
+
+				<DropdownMenuItem
+					onClick={() => {
 						updateThemeChoice("light");
 					}}
 				>
@@ -41,15 +50,6 @@ export const ThemeSelector: FC<{ onOpenChange: () => void }> = ({
 				>
 					<LucideMoon className="mr-2 h-4 w-4" />
 					<span>Dark</span>
-				</DropdownMenuItem>
-
-				<DropdownMenuItem
-					onClick={() => {
-						updateThemeChoice("system");
-					}}
-				>
-					<LucideLaptop className="mr-2 h-4 w-4" />
-					<span>Same as device</span>
 				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
