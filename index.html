@@ -6,24 +6,30 @@
 		<title>Proper Dark Theme</title>
 		<link rel="icon" type="image/png" href="/Zwyx-220x220-rounded.png" />
 
-		<script type="text/javascript">
+		<meta name="theme-color" content="#020817" />
+
+		<script>
 			// Set the theme's class as soon as possible to prevent a flash of the wrong theme
 
 			var lightThemeName = "light";
 			var darkThemeName = "dark";
-
+			var storedTheme = localStorage.getItem("theme");
 			var theme;
 
-			try {
-				theme = localStorage.getItem("theme");
-			} catch {}
-
-			if (theme === lightThemeName || theme === darkThemeName) {
-				document.documentElement.classList.add(theme);
+			if (storedTheme === lightThemeName || storedTheme === darkThemeName) {
+				theme = storedTheme;
 			} else if (matchMedia("(prefers-color-scheme: dark)").matches) {
-				document.documentElement.classList.add(darkThemeName);
+				theme = darkThemeName;
 			} else {
-				document.documentElement.classList.add(lightThemeName);
+				theme = lightThemeName;
+			}
+
+			document.documentElement.classList.add(theme);
+
+			if (theme === lightThemeName) {
+				document
+					.querySelector('meta[name="theme-color"]')
+					?.setAttribute("content", "#ffffff");
 			}
 		</script>
 	</head>
