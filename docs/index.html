@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Proper Dark Theme</title>
+		<link rel="icon" type="image/png" href="/proper-dark-theme/Zwyx-220x220-rounded.png" />
+
+		<meta name="theme-color" content="#020817" />
+
+		<script>
+			// Set the theme's class as soon as possible to prevent a flash of the wrong theme
+
+			var lightThemeName = "light";
+			var darkThemeName = "dark";
+			var storedTheme = localStorage.getItem("theme");
+			var theme;
+
+			if (storedTheme === lightThemeName || storedTheme === darkThemeName) {
+				theme = storedTheme;
+			} else if (matchMedia("(prefers-color-scheme: dark)").matches) {
+				theme = darkThemeName;
+			} else {
+				theme = lightThemeName;
+			}
+
+			document.documentElement.classList.add(theme);
+
+			if (theme === lightThemeName) {
+				document
+					.querySelector('meta[name="theme-color"]')
+					?.setAttribute("content", "#ffffff");
+			}
+		</script>
+		<script type="module" crossorigin src="/proper-dark-theme/assets/index-a0493d6b.js"></script>
+		<link rel="stylesheet" href="/proper-dark-theme/assets/index-78f8e7d0.css">
+	</head>
+	<body>
+		<div id="root"></div>
+		
+	</body>
+</html>
